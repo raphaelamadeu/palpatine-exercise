@@ -79,8 +79,18 @@ const printOutput = async data => {
     }));
 }
 
+const hasApiKey = () => {
+    if (!process.env.API_KEY) {
+        console.log('Please fill the created .env file with your API_KEY');
+        fs.writeFileSync('./.env', 'API_KEY=Paste your api key here');
+        return false;
+    }
+    return true;
+}
+
 const init = async () => {
     try {
+        if(!hasApiKey()) return;
         const inputData = readDataFile();
         const decryptedData = await decryptData(inputData);
         await printOutput(decryptedData);
