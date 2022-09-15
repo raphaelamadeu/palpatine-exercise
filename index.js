@@ -94,7 +94,7 @@ const init = async () => {
         const inputData = readDataFile();
         const decryptedData = await decryptData(inputData);
         await printOutput(decryptedData);
-        console.log('Citizens super secret info fetched.')
+        console.log('Citizens super secret info fetched.');
     } catch (e) {
         console.log('Error:init', e);
     }
